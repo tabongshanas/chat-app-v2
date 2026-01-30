@@ -16,10 +16,14 @@
         <div class="body-container">
             <div class="sign-up-form-container">
                 <div class="user-profile-pic">
-                    <input type="file" id="profile--pic" hidden>
-                    <label for="profile--pic">
-                        <i class="fa fa-user"></i>
-                    </label>
+                    <form action="http://127.0.0.1:7000/upload-profile" method="post" enctype="multipart/form-data">
+                        <input type="file" id="profile--pic" name="photo" hidden>
+                        <label for="profile--pic">
+                            <i class="fa fa-user"></i>
+                            <img id="profile" src="" alt="" srcset="">
+                        </label>
+                        <!-- <button id="getProfileBtn" type="submit">upload</button> -->
+                    </form>
                 </div>
 
                 <form id="form">

@@ -103,6 +103,8 @@ const userName = sessionStorage.getItem('first-name');
 
 socket.on('disconnect', () => {
     // connect_disconnect(sessionStorage.getItem('first-name'), 'disconnect');
+    alertNewUser('user disconnect')
+    mountAlertNewUser.textContent = '';
     window.location.reload(true)
 })
 

@@ -1,5 +1,7 @@
 const form = document.getElementById('form');
 const firstName = document.getElementById('firstName');
+const profile_pic = document.getElementById('profile');
+const getProfileBtn = document.getElementById('getProfileBtn');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();

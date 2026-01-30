@@ -1,9 +1,30 @@
 const app = require('express')();
+const multer = require('multer');
 
 const server = require('http').createServer(app);
 const PORT = 7000;
 // const users = new Map();
 const onlineUsers = {};
+
+// multer set up
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './../frontend/images/uploads')
+    },
+    filename: (req, file, cb) => {
+        const ext = file.mimetype.split("/")[1];
+        const rand = Math.floor(Math.random()) + 1;
+        cb(null, `user-${rand}.${ext}`);
+    }
+})
+
+const upload = multer({ storage })
+app.post('/upload-profile', upload.single('photo'), (req, res) => {
+    console.log(req.file);   // uploaded file info
+    console.log(req.body);   // text fields
+
+    res.send("File uploaded successfully, keep browsing!");
+})
 
 const io = require('socket.io')(server, {
     cors: {
