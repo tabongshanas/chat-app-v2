@@ -16,6 +16,10 @@ io.on('connection', (Socket) => {
     Socket.on('client-msg', (msg) => {
         Socket.broadcast.emit('msg-from-server', msg)
     })
+
+    Socket.on('user-name-from-client', (name) => {
+        Socket.broadcast.emit('user-name-from-server', name)
+    })
 })
 
 server.listen(PORT, () => {

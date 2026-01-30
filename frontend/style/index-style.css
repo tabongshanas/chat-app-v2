@@ -50,7 +50,7 @@
 .primary-btn a {
     padding: 10px 20px;
     font-size: 17px;
-    font-family: Geist;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 200px;
     text-decoration: none;
     color: var(--white-on-non-white-color);
@@ -159,5 +159,9 @@
 /* JS CLASSES */
 .hide-slider-section {
     opacity: 0;
+    transition: 0.8s;
+}
+.bring-slider-section {
+    opacity: 1;
     transition: 0.8s;
 }
