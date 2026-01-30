@@ -1,0 +1,70 @@
+:root {
+    --app-bg-color: rgba(180, 180, 180, 0.323);
+    --primary-color: #144A96;
+    --primar-hover-color: #175dc0;
+    --white-on-non-white-color: white;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sign-up-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.user-profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    cursor: pointer;
+}
+.user-profile-pic i {
+    font-size: 100px;
+    color: rgba(198, 198, 198, 0.989);
+    cursor: pointer;
+}
+
+
+#form {
+    margin-top: 50px;
+}
+.user-details {
+    display: flex;
+    margin-top: 50px;
+}
+.user-details input {
+    width: 400px;
+    padding: 13px 20px;
+    font-size: 14px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    caret-color: var(--primary-color);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.user-details input:focus {
+    border: 1px solid var(--primar-hover-color);
+}
+.detail:not(:nth-child(even)) {
+    margin-right: 20px;
+}
+
+.rearange--primary-btn {
+    width: 100%;
+    margin-top: 50px;
+    border: none;
+    padding: 4px;
+}
+.rearange {
+    text-align: center;
+}
