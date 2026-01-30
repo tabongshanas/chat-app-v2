@@ -5,6 +5,8 @@ const socket = io.connect('http://localhost:7000');
 const mountNumberConnected = document.querySelector('.mount-number-connected');
 const mountChatMessages = document.getElementById('mount-chat-messages');
 const chatSendIcon = document.querySelector('.chat-send-icon');
+const numberConnected = document.querySelector('.number-connected');
+const mountAlertNewUser = document.querySelector('.mount-alert-new-user');
 
 // functs for creating and mounting DOM elements
 const getTime = () => {
@@ -72,12 +74,65 @@ const displayMessage = (containerType, timeType, profileType, senRec, message) =
     mountChatMessages.appendChild(positionContainer);
 }
 
-// LOGICS
-const userName = 'shanas';
+// const connect_disconnect = (user, conndis) => {
+//     const connect_disconnect = document.createElement('p');
+//     connect_disconnect.textContent = conndis === 'connect' ? `${user} just connected` : `${user}`;
+//     connect_disconnect.className = 'connectDisconnect'
+//     mountChatMessages.appendChild(connect_disconnect);
+// }
+const alertNewUser = (user) => {
+    const connect_disconnect = document.createElement('div');
+    connect_disconnect.textContent = `${user} just got connected!`;
+    connect_disconnect.className = 'signal-new-user';
+    mountAlertNewUser.className = 'mount-alert-new-user';
+    mountAlertNewUser.textContent = '';
+    
+    window.setTimeout(() => {
+        mountAlertNewUser.textContent = '';
+        mountAlertNewUser.classList.add('show-mount-alert-new-user');
+        mountAlertNewUser.append(connect_disconnect);
 
-socket.on('connect', () => {
-    displayUserSideConnect(userName);
+        window.setTimeout(() => {
+            mountAlertNewUser.classList.remove('show-mount-alert-new-user');
+        }, 6000)
+    }, 2000)
+}
+
+// LOGICS
+const userName = sessionStorage.getItem('first-name');
+
+socket.on('disconnect', () => {
+    // connect_disconnect(sessionStorage.getItem('first-name'), 'disconnect');
+    window.location.reload(true)
 })
+
+socket.on('users-list', (users) => {
+    console.log('connected users: ', users)
+    console.log('nuber users: ', users.length)
+    numberConnected.textContent = users.length;
+})
+
+// real word to use
+socket.emit("login", sessionStorage.getItem('first-name'));
+
+socket.on("online-users", users => {
+    console.log(users);
+    numberConnected.textContent = users.length;
+    mountNumberConnected.textContent = '';
+    
+    users.forEach(user => {
+        // connect_disconnect(user, 'connect')
+        alertNewUser(user)
+        displayUserSideConnect(user);
+    });
+});
+socket.on('reload-page', () => {
+    window.location.reload();
+})
+// socket.on('reminder', () => {
+//     window.location.reload();
+//     connect_disconnect('Please, refresh your page to know number of people present!', 'disconnect')
+// })
 
 chatSendIcon.addEventListener('click', (e) => {
     e.preventDefault();
@@ -93,6 +148,6 @@ socket.on('msg-from-server', (msg) => {
     displayMessage('receiver-container', 'receiver-time', 'receiver-profile', 'receiver-message', msg)
 })
 
-socket.on('new-member', (id) => {
-    displayUserSideConnect(userName);
-})
+// socket.on('new-member', (id) => {
+//     displayUserSideConnect(userName);
+// })

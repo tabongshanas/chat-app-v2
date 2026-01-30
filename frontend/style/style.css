@@ -17,6 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 #side-bar {
@@ -145,7 +146,7 @@
 }
 #message {
     width: 600px;
-    height: 50px;
+    height: 60px;
     padding: 5px 10px;
     resize: none;
     outline: none;
@@ -166,7 +167,8 @@
   width: 8px;
 }
 #mount-chat-messages::-webkit-scrollbar-track {
-  background: var(--app-bg-color);
+    background: var(--app-bg-color);
+    border-radius: 10px;
 }
 #mount-chat-messages::-webkit-scrollbar-thumb {
     background: var(--primary-color);
@@ -250,6 +252,10 @@
     margin-right: 0;
     padding: 10px;
     color: rgb(38, 38, 38);
+    border-radius: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .sender {
@@ -267,4 +273,30 @@
 }
 .receiver {
     background-color: var(--app-bg-color);
+}
+
+.mount-alert-new-user {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    transform: translateX(250px);
+    transition: 0.3s;
+    visibility: hidden;
+}
+.signal-new-user {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 13px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.show-mount-alert-new-user {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.connectDisconnect{
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
