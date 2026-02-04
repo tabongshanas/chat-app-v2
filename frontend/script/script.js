@@ -8,6 +8,9 @@ const chatSendIcon = document.querySelector('.chat-send-icon');
 const numberConnected = document.querySelector('.number-connected');
 const mountAlertNewUser = document.querySelector('.mount-alert-new-user');
 
+const notificationSound = new Audio('./../audio/new-notification.mp3');
+const NewUserConnectedSound = new Audio('./../audio/new-user-connected.mp3');
+
 // functs for creating and mounting DOM elements
 const getTime = () => {
     let hours = new Date().getHours();
@@ -72,6 +75,11 @@ const displayMessage = (containerType, timeType, profileType, senRec, message) =
     positionContainer.append(timeStamp, profileMsgContainer);
 
     mountChatMessages.appendChild(positionContainer);
+    mountChatMessages.scrollTo(0, mountChatMessages.scrollHeight)
+    
+    if (containerType === 'receiver-container') {
+        notificationSound.play();
+    }
 }
 
 // const connect_disconnect = (user, conndis) => {

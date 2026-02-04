@@ -29,7 +29,7 @@
     overflow-y: scroll;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    background-color: aliceblue;
+    background-color: rgb(240, 248, 255);
 }
 #side-bar::-webkit-scrollbar {
   width: 8px;
@@ -162,6 +162,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     margin-bottom: 20px;
+    padding-bottom: 20px;
 }
 
 #mount-chat-messages::-webkit-scrollbar {
